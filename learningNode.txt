@@ -1,0 +1,69 @@
+Using class instead of Function
+-------------------------------
+
+class Calculator{
+    sum(a,b){
+        return a+b;
+    }
+}
+
+console.log(new Calculator().sum(60,9));
+
+
+
+
+
+arrowFunction
+-------------
+
+const arrowFunction = value => {
+    ...Statements
+}
+
+
+
+
+
+Object Creation and Deconstructsion
+-----------------------------------
+
+const objectA = {
+    name: "demoPerson"
+    age: 20
+};
+
+const objectB = {
+    ...objectA
+    age: 25
+};
+
+//arrays can be Deconstructed too
+
+
+
+
+
+Filtering null values from arrays
+---------------------------------
+
+const newArray= array.filter(value=> !!value);
+
+
+
+
+
+Using libraries from NodeModules
+--------------------------------
+
+const moment = require("moment");
+console.log(moment(),format("DD MON, YYYY"));
+
+
+
+
+async await for api's
+---------------------
+
+(async function(){
+    consr reponse = await library.get("api");
+})
