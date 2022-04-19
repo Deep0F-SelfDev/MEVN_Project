@@ -47,6 +47,13 @@ BookSchema.virtual('id').get(function() {
 });
 
 BookSchema.virtual('status').get(function() {
+  if(Number(this.stock)>0){
+    return 'available';
+  }
+  return 'unavailable';
+});
+
+BookSchema.virtual('status').get(function() {
   if (Number(this.stock) > 0) {
     return 'available';
   }
