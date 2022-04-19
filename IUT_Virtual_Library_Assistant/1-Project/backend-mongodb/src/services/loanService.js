@@ -13,6 +13,7 @@ module.exports = class LoanService {
   }
 
   async create(data) {
+
     data.dueDate = await this._calculateDueDate(data);
 
     const session = await AbstractRepository.createSession();
@@ -33,6 +34,13 @@ module.exports = class LoanService {
   }
 
   async update(id, data) {
+    if (!data.returnDate) {
+      throw new ValidationError(
+        this.language,
+        'entities.loan.validation.returnDateRequired',
+      );
+    }
+
     const session = await AbstractRepository.createSession();
 
     try {
@@ -129,7 +137,7 @@ module.exports = class LoanService {
     return count > 0;
   }
 
-  async calculateDueDate(data){
+  async _calculateDueDate(data){
     const settings = await SettingService.findOrCreateDefault(
     this.currentUser,
   );
