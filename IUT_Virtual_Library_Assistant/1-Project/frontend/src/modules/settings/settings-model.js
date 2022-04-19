@@ -2,7 +2,6 @@ import { i18n } from '@/i18n';
 import EnumeratorField from '@/shared/fields/enumerator-field';
 import IntegerField from '@/shared/fields/integer-field';
 import { GenericModel } from '@/shared/model/generic-model';
-import { min } from 'moment';
 
 const themes = [
   {
