@@ -10,17 +10,6 @@
   >
   
     <el-row>                                                                       <!--Search Fields-->
-      <el-col :lg="12" :md="16" :sm="24">
-        <el-form-item :label="fields.id.label" :prop="fields.id.name">
-          <el-input v-model="model[fields.id.name]"/>
-        </el-form-item>
-      </el-col>
-
-      <el-col style="margin-bottom: -0.41px;" :lg="12" :md="16" :sm="24">
-        <el-form-item :label="fields.createdAtRange.label" :prop="fields.createdAtRange.name">
-          <el-date-picker type="datetimerange" v-model="model[fields.createdAtRange.name]"></el-date-picker>
-        </el-form-item>
-      </el-col>
 
       <el-col :lg="12" :md="16" :sm="24">
         <el-form-item :label="fields.isbn.label" :prop="fields.isbn.name">
