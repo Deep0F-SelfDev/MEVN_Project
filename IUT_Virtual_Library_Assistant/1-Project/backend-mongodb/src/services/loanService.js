@@ -1,6 +1,7 @@
 const LoanRepository = require('../database/repositories/loanRepository');
 const ValidationError = require('../errors/validationError');
 const AbstractRepository = require('../database/repositories/abstractRepository');
+const Roles = require('../security/roles');
 
 module.exports = class LoanService {
   constructor({ currentUser, language }) {
@@ -76,6 +77,20 @@ module.exports = class LoanService {
   }
 
   async findAndCountAll(args) {
+    const isMember =
+      this.currentUser.roles.includes(
+        Roles.values.student,
+      ) &&
+      !this.currentUser.roles.includes(
+        Roles.values.librarian,
+      );
+
+    if (isMember) {
+      args.filter = {
+        ...args.filter,
+        member: this.currentUser.id,
+      };
+    }
     return this.repository.findAndCountAll(args);
   }
 

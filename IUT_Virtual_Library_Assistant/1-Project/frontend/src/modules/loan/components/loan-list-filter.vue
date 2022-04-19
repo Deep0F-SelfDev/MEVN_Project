@@ -9,7 +9,6 @@
     ref="form"
   >
     <el-row>
-
       <el-col :lg="12" :md="16" :sm="24">
         <el-form-item :label="fields.book.label" :prop="fields.book.name">
           <app-autocomplete-one-input
@@ -20,7 +19,7 @@
       </el-col>
 
       <el-col :lg="12" :md="16" :sm="24">
-        <el-form-item :label="fields.member.label" :prop="fields.member.name">
+        <el-form-item :label="fields.member.label" :prop="fields.member.name" v-if="currentUserIsLibrarian">
           <app-autocomplete-one-input
             :fetchFn="fields.member.fetchFn"
             v-model="model[fields.member.name]"
@@ -28,19 +27,19 @@
         </el-form-item>
       </el-col>
 
-      <el-col style="margin-bottom: -0.41px;" :lg="12" :md="16" :sm="24">
+      <el-col :lg="12" :md="16" :sm="24" style="margin-bottom: -0.41px;">
         <el-form-item :label="fields.issueDateRange.label" :prop="fields.issueDateRange.name">
           <el-date-picker type="datetimerange" v-model="model[fields.issueDateRange.name]"></el-date-picker>
         </el-form-item>
       </el-col>
 
-      <el-col style="margin-bottom: -0.41px;" :lg="12" :md="16" :sm="24">
+      <el-col :lg="12" :md="16" :sm="24" style="margin-bottom: -0.41px;">
         <el-form-item :label="fields.dueDateRange.label" :prop="fields.dueDateRange.name">
           <el-date-picker type="datetimerange" v-model="model[fields.dueDateRange.name]"></el-date-picker>
         </el-form-item>
       </el-col>
 
-      <el-col style="margin-bottom: -0.41px;" :lg="12" :md="16" :sm="24">
+      <el-col :lg="12" :md="16" :sm="24" style="margin-bottom: -0.41px;">
         <el-form-item :label="fields.returnDateRange.label" :prop="fields.returnDateRange.name">
           <el-date-picker type="datetimerange" v-model="model[fields.returnDateRange.name]"></el-date-picker>
         </el-form-item>
@@ -107,6 +106,7 @@ export default {
       labelWidthFilter: 'layout/labelWidthFilter',
       loading: 'loan/list/loading',
       filter: 'loan/list/filter',
+      currentUserIsLibrarian: 'auth/currentUserIsLibrarian'
     }),
 
     fields() {
