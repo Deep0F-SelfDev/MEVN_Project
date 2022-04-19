@@ -68,14 +68,6 @@
         <template slot-scope="scope">{{ presenter(scope.row, 'status') }}</template>
       </el-table-column>
 
-      <el-table-column
-        :label="fields.createdAt.label"
-        :prop="fields.createdAt.name"
-        sortable="custom"
-      >
-        <template slot-scope="scope">{{ presenter(scope.row, 'createdAt') }}</template>
-      </el-table-column>
-
       <el-table-column :fixed="isMobile? undefined : 'right'" align="center" width="180">
         <template slot-scope="scope">
           <div class="table-actions">
