@@ -19,7 +19,7 @@
         <app-i18n code="entities.loan.new.title" v-if="!isEditing"></app-i18n>
       </h1>
 
-      <div class="app-page-spinner" v-if="findLoading" v-loading="findLoading"></div>
+      <div class="app-page-spinner" v-if="findLoading || findSettingsLoading" v-loading="findLoading || findSettingsLoading"></div>
 
       <el-form
         :label-position="labelPosition"
@@ -69,7 +69,7 @@
           :required="fields.issueDate.required"
         >
           <el-col :lg="11" :md="16" :sm="24">
-            <el-date-picker placeholder type="datetime" v-model="model[fields.issueDate.name]"></el-date-picker>
+            <el-date-picker placeholder type="datetime" v-model="model[fields.issueDate.name]" @change="onIssueDateChange"></el-date-picker>
           </el-col>
         </el-form-item>
 
@@ -79,7 +79,7 @@
           :required="fields.dueDate.required"
         >
           <el-col :lg="11" :md="16" :sm="24">
-            <el-date-picker placeholder type="datetime" v-model="model[fields.dueDate.name]"></el-date-picker>
+            <el-date-picker placeholder type="datetime" v-model="model[fields.dueDate.name]" :readonly="true"></el-date-picker>
           </el-col>
         </el-form-item>
 
@@ -136,6 +136,7 @@
 import { mapGetters, mapActions } from 'vuex';
 import { FormSchema } from '@/shared/form/form-schema';
 import { LoanModel } from '@/modules/loan/loan-model';
+import moment from 'moment';
 
 const { fields } = LoanModel;
 const formSchema = new FormSchema([
@@ -167,6 +168,8 @@ export default {
       record: 'loan/form/record',
       findLoading: 'loan/form/findLoading',
       saveLoading: 'loan/form/saveLoading',
+      findSettingsLoading : 'settings/findLoading',
+      loanPeriodInDaysStudent : 'settings/loanPeriodInDaysStudent',
     }),
 
     isEditing() {
@@ -179,6 +182,8 @@ export default {
   },
 
   async created() {
+    await this.doFindSettings();
+  
     if (this.isEditing) {
       await this.doFind(this.id);
     } else {
@@ -194,7 +199,12 @@ export default {
       doNew: 'loan/form/doNew',
       doUpdate: 'loan/form/doUpdate',
       doCreate: 'loan/form/doCreate',
+      doFindSettings: 'settings/doFind',
     }),
+
+    onIssueDateChange(value){
+      this.model.dueDate = moment(value).add(this.loanPeriodInDaysStudent, 'days');
+    },
 
     doReset() {
       this.model = formSchema.initialValues(this.record);

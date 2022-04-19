@@ -17,6 +17,7 @@ export default {
     settings: (state) => state.settings,
     findLoading: (state) => !!state.findLoading,
     saveLoading: (state) => !!state.saveLoading,
+    loanPeriodInDaysStudent: (state) => (state.settings && state.settings.loanPeriodInDaysStudent) || 0
   },
 
   mutations: {

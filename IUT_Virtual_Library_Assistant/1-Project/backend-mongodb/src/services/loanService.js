@@ -2,6 +2,8 @@ const LoanRepository = require('../database/repositories/loanRepository');
 const ValidationError = require('../errors/validationError');
 const AbstractRepository = require('../database/repositories/abstractRepository');
 const Roles = require('../security/roles');
+const SettingService = require('../services/settingsService');
+const moment = require('moment');
 
 module.exports = class LoanService {
   constructor({ currentUser, language }) {
@@ -11,6 +13,8 @@ module.exports = class LoanService {
   }
 
   async create(data) {
+    data.dueDate = await this._calculateDueDate(data);
+
     const session = await AbstractRepository.createSession();
 
     try {
@@ -124,4 +128,12 @@ module.exports = class LoanService {
 
     return count > 0;
   }
-};
+
+  async calculateDueDate(data){
+    const settings = await SettingService.findOrCreateDefault(
+    this.currentUser,
+  );
+
+  return moment(data.issueDate).add(settings.loanPeriodInDaysStudent, 'days').toISOString();
+  }
+}
