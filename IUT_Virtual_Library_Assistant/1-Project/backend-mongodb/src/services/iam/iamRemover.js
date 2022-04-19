@@ -104,7 +104,7 @@ module.exports = class IamRemover {
   async _isRemovingOwnOwnerRole() {
     if (
       !this.data.all &&
-      !this._roles.includes(Roles.values.owner)
+      !this._roles.includes(Roles.values.librarian)
     ) {
       return false;
     }
@@ -117,7 +117,7 @@ module.exports = class IamRemover {
       this.currentUser.id,
     );
 
-    return currentUserRoles.includes(Roles.values.owner);
+    return currentUserRoles.includes(Roles.values.librarian);
   }
 
   async _validate() {

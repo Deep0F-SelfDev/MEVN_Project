@@ -1,0 +1,24 @@
+documentation:
+=============
+
+in router.js:
+
+const page1 = { template : ...}
+const page2 = { template : ...}
+const routes = [
+    {path : '...', component : page1}
+    {path : '...', component : page2}
+]
+const router = new VueRouter({
+    routes
+})
+const app = new vue({
+    router
+}).mount('#app')
+
+in html:
+
+<router-link to="..."> link 1 <router-link>
+<router-link to="..."> link 2 <router-link>
+
+<router-view>component shown here</router-view>

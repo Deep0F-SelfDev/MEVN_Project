@@ -7,180 +7,129 @@ class Permissions {
       iamEdit: {
         id: 'iamEdit',
         allowedRoles: [
-          roles.owner,
-          roles.iamSecurityReviewer,
-          roles.editor,
+          roles.librarian,
         ],
         allowedStorageFolders: ['user'],
       },
       iamCreate: {
         id: 'iamCreate',
         allowedRoles: [
-          roles.owner,
-          roles.iamSecurityReviewer,
-          roles.editor,
+          roles.librarian,
         ],
       },
       iamImport: {
         id: 'iamImport',
         allowedRoles: [
-          roles.owner,
-          roles.iamSecurityReviewer,
-          roles.editor,
+          roles.librarian,
         ],
       },
       iamRead: {
         id: 'iamRead',
         allowedRoles: [
-          roles.owner,
-          roles.iamSecurityReviewer,
-          roles.editor,
-          roles.viewer,
+          roles.librarian,
         ],
       },
       iamUserAutocomplete: {
         id: 'iamUserAutocomplete',
         allowedRoles: [
-          roles.owner,
-          roles.editor,
-          roles.viewer,
-
-          roles.loanEditor,
-          roles.loanViewer,
+          roles.librarian,
+          roles.student,
+          roles.faculty,
         ],
       },
       auditLogRead: {
         id: 'auditLogRead',
-        allowedRoles: [roles.owner, roles.auditLogViewer, roles.viewer],
+        allowedRoles: [roles.librarian,],
       },
       settingsEdit: {
         id: 'settingsEdit',
-        allowedRoles: [roles.owner],
+        allowedRoles: [roles.librarian],
       },
       loanImport: {
         id: 'loanImport',
         allowedRoles: [
-          roles.owner,
-          roles.editor,
-          roles.entityEditor,
-          roles.loanEditor,
+          roles.librarian,
         ],
       },
       loanCreate: {
         id: 'loanCreate',
         allowedRoles: [
-          roles.owner,
-          roles.editor,
-          roles.entityEditor,
-          roles.loanEditor,
+          roles.librarian,
         ],
         allowedStorageFolders: ['loan'],
       },
       loanEdit: {
         id: 'loanEdit',
         allowedRoles: [
-          roles.owner,
-          roles.editor,
-          roles.entityEditor,
-          roles.loanEditor,
+          roles.librarian,
         ],
         allowedStorageFolders: ['loan'],
       },
       loanDestroy: {
         id: 'loanDestroy',
         allowedRoles: [
-          roles.owner,
-          roles.editor,
-          roles.entityEditor,
-          roles.loanEditor,
+          roles.librarian,
         ],
         allowedStorageFolders: ['loan'],
       },
       loanRead: {
         id: 'loanRead',
         allowedRoles: [
-          roles.owner,
-          roles.editor,
-          roles.viewer,
-          roles.entityEditor,
-          roles.loanEditor,
-          roles.loanViewer,
+          roles.librarian,
+          roles.student,
+          roles.faculty
         ],
       },
       loanAutocomplete: {
         id: 'loanAutocomplete',
         allowedRoles: [
-          roles.owner,
-          roles.editor,
-          roles.viewer,
-          roles.entityEditor,
-          roles.loanEditor,
-          roles.loanViewer,
-
+          roles.librarian,
+          roles.student,
+          roles.faculty,
         ],
       },
 
       bookImport: {
         id: 'bookImport',
         allowedRoles: [
-          roles.owner,
-          roles.editor,
-          roles.entityEditor,
-          roles.bookEditor,
+          roles.librarian,
         ],
       },
       bookCreate: {
         id: 'bookCreate',
         allowedRoles: [
-          roles.owner,
-          roles.editor,
-          roles.entityEditor,
-          roles.bookEditor,
+          roles.librarian,
         ],
         allowedStorageFolders: ['book'],
       },
       bookEdit: {
         id: 'bookEdit',
         allowedRoles: [
-          roles.owner,
-          roles.editor,
-          roles.entityEditor,
-          roles.bookEditor,
+          roles.librarian,
         ],
         allowedStorageFolders: ['book'],
       },
       bookDestroy: {
         id: 'bookDestroy',
         allowedRoles: [
-          roles.owner,
-          roles.editor,
-          roles.entityEditor,
-          roles.bookEditor,
+          roles.librarian,
         ],
         allowedStorageFolders: ['book'],
       },
       bookRead: {
         id: 'bookRead',
         allowedRoles: [
-          roles.owner,
-          roles.editor,
-          roles.viewer,
-          roles.entityEditor,
-          roles.bookEditor,
-          roles.bookViewer,
+          roles.librarian,
+          roles.student,
+          roles.faculty,
         ],
       },
       bookAutocomplete: {
         id: 'bookAutocomplete',
         allowedRoles: [
-          roles.owner,
-          roles.editor,
-          roles.viewer,
-          roles.entityEditor,
-          roles.bookEditor,
-          roles.bookViewer,
-          roles.loanEditor,
-          roles.loanViewer,
+          roles.librarian,
+          roles.student,
+          roles.faculty,
         ],
       },
     };

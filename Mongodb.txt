@@ -1,0 +1,22 @@
+Mongoose : object Modeling
+
+Mongoose.connect(...,newPurser)
+
+cost myschema = new mongoose.Shcema({
+    text:{
+        type:string,
+
+    }{timestamp : true} --> website wide tracking
+})
+
+const Todo = mongoose.model("todo",myschema);
+
+modules.exports = Todo
+
+myschema.set("toJSON",{
+    getters: true
+});
+
+myschema.set("toObject",{
+    getters: true
+});

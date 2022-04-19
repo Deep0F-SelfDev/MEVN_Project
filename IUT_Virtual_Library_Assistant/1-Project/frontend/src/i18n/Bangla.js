@@ -188,58 +188,24 @@ const bangla = { //ptBR
   },
 
   roles: {
-    owner: {
-      label: 'Owner',
+    librarian: {
+      label: 'Librarian',
       description: 'সমস্ত বৈশিষ্ট্য সম্পূর্ণ অনুমতি',
     },
-    editor: {
-      label: 'Editor',
-      description: 'সম্পাদনা করার অনুমতি',
+    student: {
+      label: 'Student',
+      description: 'সমস্ত বৈশিষ্ট্য সম্পূর্ণ অনুমতি',
     },
-    viewer: {
-      label: 'Viewer',
-      description:
-        'দেখার অনুমতি',
-    },
-    auditLogViewer: {
-      label: 'Audit Log Viewer',
-      description:
-        'Audit Log দেখার অনুমতি',
-    },
-    iamSecurityReviewer: {
-      label: 'IAM Security Reviewer',
-      description: `IAM Security Reviewer অনুমতি`,
-    },
-    entityEditor: {
-      label: 'Entity Editor',
-      description: 'Entity সম্পাদনা করার অনুমতি',
-    },
-    entityViewer: {
-      label: 'Entity Veiwer',
-      description:
-        'Entity দেখার অনুমতি',
-    },
-    loanEditor: {
-      label: 'Loan সম্পাদক',
-      description: 'Loan সম্পাদনা করার অনুমতি',
-    },
-    loanViewer: {
-      label: 'Loan Viewer',
-      description: 'Loan দেখার অনুমতি',
-    },
-    bookEditor: {
-      label: 'বই সম্পাদক',
-      description: 'বই সম্পাদনা করার অনুমতি',
-    },
-    bookViewer: {
-      label: 'বই Viewer',
-      description: 'বই দেখার অনুমতি',
-    },
+    faculty: {
+      label: 'Faculty',
+      description: 'সমস্ত বৈশিষ্ট্য সম্পূর্ণ অনুমতি',
+    }
+
   },
 
   iam: {
     title: 'ব্যবহারকারী এবং অনুমতি ব্যবস্থাপনা',
-    menu: 'IAM',
+    menu: 'ব্যবহারকারী',
     disable: 'Disable',
     disabled: 'Desabled',
     enabled: 'Enable',

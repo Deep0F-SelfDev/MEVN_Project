@@ -1,0 +1,97 @@
+jsonServer --> for running frontend (npm run serve)
+
+service.js --> calls backend (axios library)
+
+main.js --> 
+new vue({
+    render:h=>h(app),  //app is a component defined in app.vue
+}).$mount('#app')
+
+Basic Structure
+===============
+
+//inside app.vue:
+<script>
+    import name_page from'./location';
+
+    export deafult{
+        name: "app",
+
+        component:{
+            name_page
+        }
+    };
+</script>
+
+//inside name_page.vue:
+<templete>
+    html
+</templete>
+
+<script>
+    import name_page_service from '';
+    export deafult{
+        name: "name_page",
+
+        method_name(){
+            return{
+                current_state
+            }
+        }
+
+        async created(){
+            thsi.current_state = await name_page_service
+        }
+    };
+</script>
+
+//inside name_page_service.js :  (xios call backend)
+
+import axios from 'axios';
+const serverUrl = 'URL'
+export deafult{
+    async method_name(){
+        const reponse = await axios.get(`${serverUrl}/name_page`);
+        return reponse.data;
+    }
+}
+
+Vue Basic
+=========
+
+v-for --> iterator
+v-bind:key ="" --> index
+v-if --> conditionl   <div v-if="loading"> Loading ... </div>
+profs in export default --> passes variable to differnet components
+input v-model = "object.field"
+...this.object --> new object
+
+@submit or v-on:submit="do_submit_method"--> listenner
+
+do_submit_method(){
+    this.emit("submit",this.object)
+    alert(this.object.field); --> website notificationd
+}
+
+inside service after submit:
+
+export default{
+    async create _method(object){
+        const response = await axios.post(...)
+        return response.data;
+    },
+     async do_distroy(id){
+        const response = await axios.delete(.../${id})
+        return response.data;
+    }
+}
+
+to delete:
+
+export default{
+    ...
+    async do_distroy(id){
+        const response = await axios.delete(.../${id})
+        return response.data;
+    }
+}

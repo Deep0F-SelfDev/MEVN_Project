@@ -23,17 +23,6 @@
         </span>
       </el-menu-item>
 
-      <el-menu-item
-        :class="classFor('/iam')"
-        :route="{ path: '/iam' }"
-        index="/iam"
-        v-if="hasPermissionToIam"
-      >
-        <i class="el-icon-fa-user-plus"></i>
-        <span slot="title">
-          <app-i18n code="iam.menu"></app-i18n>
-        </span>
-      </el-menu-item>
 
       <el-menu-item
         :class="classFor('/audit-logs')"
@@ -44,6 +33,18 @@
         <i class="el-icon-fa-history"></i>
         <span slot="title">
           <app-i18n code="auditLog.menu"></app-i18n>
+        </span>
+      </el-menu-item>
+
+      <el-menu-item
+        :class="classFor('/iam')"
+        :route="{ path: '/iam' }"
+        index="/iam"
+        v-if="hasPermissionToIam"
+      >
+        <i class="el-icon-fa-user-plus"></i>
+        <span slot="title">
+          <app-i18n code="iam.menu"></app-i18n>
         </span>
       </el-menu-item>
 
@@ -65,7 +66,7 @@
         index="/loan"
         v-if="hasPermissionToLoan"
       >
-        <i class="el-icon-fa-chevron-right"></i>
+        <i class="el-icon-fa-id-card-o"></i>
         <span slot="title">
           <app-i18n code="entities.loan.menu"></app-i18n>
         </span>
@@ -77,7 +78,7 @@
         index="/book"
         v-if="hasPermissionToBook"
       >
-        <i class="el-icon-fa-chevron-right"></i>
+        <i class="el-icon-fa-book"></i>
         <span slot="title">
           <app-i18n code="entities.book.menu"></app-i18n>
         </span>

@@ -71,7 +71,7 @@ module.exports = class IamEditor {
   }
 
   async _isRemovingOwnOwnerRole() {
-    if (this._roles.includes(Roles.values.owner)) {
+    if (this._roles.includes(Roles.values.librarian)) {
       return false;
     }
 
@@ -83,7 +83,7 @@ module.exports = class IamEditor {
       this.currentUser.id,
     );
 
-    return currentUserRoles.includes(Roles.values.owner);
+    return currentUserRoles.includes(Roles.values.librarian);
   }
 
   async _validate() {

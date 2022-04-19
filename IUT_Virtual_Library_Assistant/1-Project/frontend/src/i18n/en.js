@@ -68,7 +68,7 @@ const en = {
       },
       enumerators: {
         'status': {
-          'inProgress': 'InProgress',
+          'inProgress': 'In Progress',
           'overdue': 'Overdue',
           'closed': 'Closed',
         },
@@ -190,55 +190,24 @@ const en = {
   },
 
   roles: {
-    owner: {
-      label: 'Owner',
+    librarian: {
+      label: 'Librarian',
       description: 'Full access to all resources',
     },
-    editor: {
-      label: 'Editor',
-      description: 'Edit access to all resources',
+    student: {
+      label: 'Student',
+      description: 'Limited access to selected resources',
     },
-    viewer: {
-      label: 'Viewer',
-      description: 'View access to all resources',
+    faculty: {
+      label: 'Faculty',
+      description: 'Limited access to selected resources',
     },
-    auditLogViewer: {
-      label: 'Audit Log Viewer',
-      description: 'Access to view audit logs',
-    },
-    iamSecurityReviewer: {
-      label: 'Security Reviewer',
-      description: `Full access to manage users roles`,
-    },
-    entityEditor: {
-      label: 'Entity Editor',
-      description: 'Edit access to all entities',
-    },
-    entityViewer: {
-      label: 'Entity Viewer',
-      description: 'View access to all entities',
-    },
-    loanEditor: {
-      label: 'Loan Editor',
-      description: 'Edit access to Loans',
-    },
-    loanViewer: {
-      label: 'Loan Viewer',
-      description: 'View access to Loans',
-    },
-    bookEditor: {
-      label: 'Book Editor',
-      description: 'Edit access to Books',
-    },
-    bookViewer: {
-      label: 'Book Viewer',
-      description: 'View access to Books',
-    },
+ 
   },
 
   iam: {
-    title: 'Identity and Access Management',
-    menu: 'IAM',
+    title: 'Users and Access Management',
+    menu: 'Users',
     disable: 'Disable',
     disabled: 'Disabled',
     enabled: 'Enabled',
@@ -285,7 +254,7 @@ const en = {
         'User with this email already exists',
       userNotFound: 'User not found',
       disablingHimself: `You can't disable yourself`,
-      revokingOwnPermission: `You can't revoke your own owner permission`,
+      revokingOwnPermission: `You can't revoke your own librarian permission`,
     },
   },
 
