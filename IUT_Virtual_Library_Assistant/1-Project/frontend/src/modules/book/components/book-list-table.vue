@@ -10,8 +10,14 @@
     >
       <el-table-column type="selection" width="55"></el-table-column>
 
-      <el-table-column :label="fields.id.label" :prop="fields.id.name" sortable="custom">
-        <template slot-scope="scope">{{ presenter(scope.row, 'id') }}</template>
+      <el-table-column
+        :label="fields.images.label"
+        :prop="fields.images.name"
+        align="center"
+      >
+        <template slot-scope="scope">
+          <app-list-item-image class="book_list_image" :value="presenter(scope.row, 'images')"></app-list-item-image>
+        </template>
       </el-table-column>
 
       <el-table-column
@@ -39,29 +45,11 @@
       </el-table-column>
 
       <el-table-column
-        :label="fields.images.label"
-        :prop="fields.images.name"
-        align="center"
-      >
-        <template slot-scope="scope">
-          <app-list-item-image :value="presenter(scope.row, 'images')"></app-list-item-image>
-        </template>
-      </el-table-column>
-
-      <el-table-column
         :label="fields.status.label"
         :prop="fields.status.name"
         sortable="custom"
       >
         <template slot-scope="scope">{{ presenter(scope.row, 'status') }}</template>
-      </el-table-column>
-
-      <el-table-column
-        :label="fields.createdAt.label"
-        :prop="fields.createdAt.name"
-        sortable="custom"
-      >
-        <template slot-scope="scope">{{ presenter(scope.row, 'createdAt') }}</template>
       </el-table-column>
 
       <el-table-column :fixed="isMobile? undefined : 'right'" align="center" width="180">
@@ -182,4 +170,14 @@ export default {
 </script>
 
 <style>
+  .book_list_image{
+    border-radius: 0;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+  }
+
+  .book_list_image img{
+    object-fit: cover;
+  }
 </style>

@@ -120,7 +120,7 @@ const en = {
         'numberOfCopies': 'Number Of Copies',
         'stockRange': 'Stock',
         'stock': 'Stock',
-        'images': 'Images',
+        'images': 'Image',
         'status': 'Status',
         createdAt: 'Created at',
         updatedAt: 'Updated at',
