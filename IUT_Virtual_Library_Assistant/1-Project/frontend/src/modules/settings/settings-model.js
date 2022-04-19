@@ -1,6 +1,8 @@
 import { i18n } from '@/i18n';
 import EnumeratorField from '@/shared/fields/enumerator-field';
+import IntegerField from '@/shared/fields/integer-field';
 import { GenericModel } from '@/shared/model/generic-model';
+import { min } from 'moment';
 
 const themes = [
   {
@@ -67,6 +69,8 @@ const fields = {
     themes,
     { required: true },
   ),
+  loanPeriodInDaysStudent: new IntegerField('loanPeriodInDaysStudent', label('loanPeriodInDaysStudent'),{required: true, min: 7}),
+  loanPeriodInDaysFaculty: new IntegerField('loanPeriodInDaysFaculty', label('loanPeriodInDaysFaculty'),{required: true, min: 7}),
 };
 
 export class SettingsModel extends GenericModel {

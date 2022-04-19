@@ -4,6 +4,8 @@ const Schema = database.Schema;
 const SettingsSchema = new Schema(
   {
     theme: { type: String },
+    loanPeriodInDaysStudent:{type: Number},
+    loanPeriodInDaysFaculty:{type: Number},
     createdBy: {
       type: Schema.Types.ObjectId,
       ref: 'user',

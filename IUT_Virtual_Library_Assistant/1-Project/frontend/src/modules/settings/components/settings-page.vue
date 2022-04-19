@@ -29,6 +29,26 @@
         v-if="model"
       >
         <el-form-item
+          :label="fields.loanPeriodInDaysStudent.label"
+          :prop="fields.loanPeriodInDaysStudent.name"
+          :required="fields.loanPeriodInDaysStudent.required"
+        >
+        <el-col :lg="11" :md="16" :sm="24">
+          <el-input-number :precision="0" :step="1" v-model="model[fields.loanPeriodInDaysStudent.name]"></el-input-number>
+        </el-col>
+        </el-form-item>
+        
+        <el-form-item
+          :label="fields.loanPeriodInDaysFaculty.label"
+          :prop="fields.loanPeriodInDaysFaculty.name"
+          :required="fields.loanPeriodInDaysFaculty.required"
+        >
+        <el-col :lg="11" :md="16" :sm="24">
+          <el-input-number :precision="0" :step="1" v-model="model[fields.loanPeriodInDaysFaculty.name]"></el-input-number>
+        </el-col>
+        </el-form-item>
+
+        <el-form-item
           :label="fields.theme.label"
           :prop="fields.theme.name"
           :required="fields.theme.required"
@@ -76,7 +96,7 @@ import { FormSchema } from '@/shared/form/form-schema';
 import SettingsToolbar from '@/modules/settings/components/settings-toolbar.vue';
 
 const { fields } = SettingsModel;
-const formSchema = new FormSchema([fields.theme]);
+const formSchema = new FormSchema([fields.theme, fields.loanPeriodInDaysStudent, fields.loanPeriodInDaysFaculty,]);
 
 export default {
   name: 'app-settings-page',

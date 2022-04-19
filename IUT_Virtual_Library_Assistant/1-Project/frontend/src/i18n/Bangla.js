@@ -314,6 +314,8 @@ const bangla = { //ptBR
     },
     fields: {
       theme: 'Theme',
+      loanPeriodInDaysStudent: 'Loan Period of Students (in days)',
+      loanPeriodInDaysFaculty: 'Loan Period of Faculty (in days)',
     },
     colors: {
       default: 'সাধারণ',
