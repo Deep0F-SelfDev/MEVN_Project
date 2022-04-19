@@ -3,6 +3,7 @@ const MongooseQuery = require('../utils/mongooseQuery');
 const AuditLogRepository = require('./auditLogRepository');
 const Book = require('../models/book');
 const Loan = require('../models/loan');
+const ValidationError = require('../../errors/validationError');
 
 class BookRepository extends AbstractEntityRepository {
   async create(data, options) {
@@ -77,9 +78,7 @@ class BookRepository extends AbstractEntityRepository {
     );
   }
 
-  async refreshTwoWayRelations(record, options) {
-
-  }
+  async refreshTwoWayRelations(record, options) {}
 
   async destroyFromRelations(id, options) {
     await this.destroyRelationToOne(
@@ -137,7 +136,17 @@ class BookRepository extends AbstractEntityRepository {
       }
 
       if (filter.status) {
-        query.appendEqual('status', filter.status);
+        if (filter.status === 'available') {
+          query.appendCustom({
+            stock: { $gt: 0 },
+          });
+        }
+
+        if (filter.status === 'unavailable') {
+          query.appendCustom({
+            stock: { $lte: 0 },
+          });
+        }
       }
 
       if (filter.createdAtRange) {
@@ -161,11 +170,13 @@ class BookRepository extends AbstractEntityRepository {
   async findAllAutocomplete(search, limit) {
     let query = MongooseQuery.forAutocomplete({
       limit,
-      orderBy: 'isbn_ASC',
+      orderBy: 'title_ASC',
     });
 
     if (search) {
       query.appendId('_id', search);
+      query.appendIlike('title', search);
+      query.appendIlike('author', search);
       query.appendIlike('isbn', search);
     }
 
@@ -175,7 +186,10 @@ class BookRepository extends AbstractEntityRepository {
 
     return records.map((record) => ({
       id: record.id,
-      label: record['isbn'],
+      label: `${record['title']} - ${record['author']} - ${
+        record['isbn']
+      }`,
+      stock: record['stock'],
     }));
   }
 
@@ -187,6 +201,30 @@ class BookRepository extends AbstractEntityRepository {
         action,
         values: data,
       },
+      options,
+    );
+  }
+
+  async refreshStock(id, options) {
+    const book = await this.findById(id, options);
+
+    const booksNotInStock = await this.wrapWithSessionIfExists(
+      Loan.countDocuments({ book: id, returnDate: null }),
+      options,
+    );
+
+    const stock =
+      Number(book.numberOfCopies) - Number(booksNotInStock);
+
+    if (stock < 0) {
+      throw new ValidationError(
+        options.language,
+        'entities.book.validation.bookOutOfStock',
+      );
+    }
+
+    await this.wrapWithSessionIfExists(
+      Book.updateOne({ _id: id }, { stock }),
       options,
     );
   }
