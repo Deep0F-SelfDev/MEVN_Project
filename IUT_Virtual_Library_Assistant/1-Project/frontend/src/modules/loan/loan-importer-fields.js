@@ -8,5 +8,4 @@ export default [
   fields.issueDate,
   fields.dueDate,
   fields.returnDate,
-  fields.status,
 ];
