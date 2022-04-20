@@ -18,6 +18,12 @@ module.exports = class BookService {
         currentUser: this.currentUser,
       });
 
+      await this.repository.refreshStock(record.id, {
+        session,
+        currentUser: this.currentUser,
+        language: this.language,
+      });
+
       await AbstractRepository.commitTransaction(session);
 
       return record;
@@ -28,6 +34,13 @@ module.exports = class BookService {
   }
 
   async update(id, data) {
+    if (!(await this._willStockRemainPositive(id, data))) {
+      throw new ValidationError(
+        this.language,
+        'entities.book.validation.bookOutOfStock',
+      );
+    }
+
     const session = await AbstractRepository.createSession();
 
     try {
@@ -39,6 +52,12 @@ module.exports = class BookService {
           currentUser: this.currentUser,
         },
       );
+
+      await this.repository.refreshStock(record.id, {
+        session,
+        currentUser: this.currentUser,
+        language: this.language,
+      });
 
       await AbstractRepository.commitTransaction(session);
 
@@ -72,7 +91,10 @@ module.exports = class BookService {
   }
 
   async findAllAutocomplete(search, limit) {
-    return this.repository.findAllAutocomplete(search, limit);
+    return this.repository.findAllAutocomplete(
+      search,
+      limit,
+    );
   }
 
   async findAndCountAll(args) {
@@ -108,5 +130,15 @@ module.exports = class BookService {
     });
 
     return count > 0;
+  }
+
+  async _willStockRemainPositive(id, data) {
+    const record = await this.findById(id);
+
+    const numberOfCopiesDifference =
+      Number(data.numberOfCopies) -
+      Number(record.numberOfCopies);
+
+    return record.stock + numberOfCopiesDifference >= 0;
   }
 };

@@ -23,7 +23,7 @@ const en = {
   },
 
   app: {
-    title: 'Virtual Library Assistant',
+    title: 'Library',
   },
 
   entities: {
@@ -35,6 +35,10 @@ const en = {
       list: {
         menu: 'Loans',
         title: 'Loans',
+      },
+      emailAll: {
+        label: 'Send Reminder via Email',
+        success: 'Email(s) sent successfully',
       },
       create: {
         success: 'Loan saved successfully',
@@ -53,24 +57,24 @@ const en = {
       },
       fields: {
         id: 'Id',
-        'book': 'Book',
-        'member': 'Member',
-        'issueDateRange': 'Issue Date',
-        'issueDate': 'Issue Date',
-        'dueDateRange': 'Due Date',
-        'dueDate': 'Due Date',
-        'returnDateRange': 'Return Date',
-        'returnDate': 'Return Date',
-        'status': 'Status',
+        book: 'Book',
+        member: 'Member',
+        issueDateRange: 'Issue Date',
+        issueDate: 'Issue Date',
+        dueDateRange: 'Due Date',
+        dueDate: 'Due Date',
+        returnDateRange: 'Return Date',
+        returnDate: 'Return Date',
+        status: 'Status',
         createdAt: 'Created at',
         updatedAt: 'Updated at',
         createdAtRange: 'Created at',
       },
       enumerators: {
-        'status': {
-          'inProgress': 'In Progress',
-          'overdue': 'Overdue',
-          'closed': 'Closed',
+        status: {
+          inProgress: 'In Progress',
+          overdue: 'Overdue',
+          closed: 'Closed',
         },
       },
       new: {
@@ -84,6 +88,9 @@ const en = {
         fileName: 'loan_import_template',
         hint:
           'Files/Images columns must be the URLs of the files separated by space.',
+      },
+      validation: {
+        bookOutOfStock: 'Sorry, this book is out of stock.',
       },
     },
 
@@ -113,23 +120,23 @@ const en = {
       },
       fields: {
         id: 'Id',
-        'isbn': 'ISBN',
-        'title': 'Title',
-        'author': 'Author',
-        'numberOfCopiesRange': 'Number Of Copies',
-        'numberOfCopies': 'Number Of Copies',
-        'stockRange': 'Stock',
-        'stock': 'Stock',
-        'images': 'Image',
-        'status': 'Status',
+        isbn: 'ISBN',
+        title: 'Title',
+        author: 'Author',
+        numberOfCopiesRange: 'Number Of Copies',
+        numberOfCopies: 'Number Of Copies',
+        stockRange: 'In Stock',
+        stock: 'In Stock',
+        images: 'Images',
+        status: 'Status',
         createdAt: 'Created at',
         updatedAt: 'Updated at',
         createdAtRange: 'Created at',
       },
       enumerators: {
-        'status': {
-          'available': 'Available',
-          'unavailable': 'Unavailable',
+        status: {
+          available: 'Available',
+          unavailable: 'Unavailable',
         },
       },
       new: {
@@ -163,7 +170,7 @@ const en = {
     signinWithAnotherAccount:
       'Sign in with another account',
     emailUnverified: {
-      message: `Please confirm your email at <strong>{0}</strong> to confinue.`,
+      message: `Please confirm your email at <strong>{0}</strong> to continue.`,
       submit: `Resend email verification`,
     },
     emptyPermissions: {
@@ -194,19 +201,14 @@ const en = {
       label: 'Librarian',
       description: 'Full access to all resources',
     },
-    student: {
-      label: 'Student',
-      description: 'Limited access to selected resources',
+    member: {
+      label: 'Member',
+      description: 'Member access',
     },
-    faculty: {
-      label: 'Faculty',
-      description: 'Limited access to selected resources',
-    },
- 
   },
 
   iam: {
-    title: 'Users and Access Management',
+    title: 'Users',
     menu: 'Users',
     disable: 'Disable',
     disabled: 'Disabled',
@@ -315,8 +317,7 @@ const en = {
     },
     fields: {
       theme: 'Theme',
-      loanPeriodInDaysStudent: 'Loan Period of Students (in days)',
-      loanPeriodInDaysFaculty: 'Loan Period of Faculty (in days)',
+      loanPeriodInDays: 'Loan Period (In Days)',
     },
     colors: {
       default: 'Default',
@@ -335,33 +336,6 @@ const en = {
   },
   home: {
     menu: 'Home',
-    message: `This page uses fake data for demonstration purposes only. You can edit it at frontend/src/modules/home/components/home-page.vue.`,
-    charts: {
-      day: 'Day',
-      red: 'Red',
-      green: 'Green',
-      yellow: 'Yellow',
-      grey: 'Grey',
-      blue: 'Blue',
-      orange: 'Orange',
-      months: {
-        1: 'January',
-        2: 'February',
-        3: 'March',
-        4: 'April',
-        5: 'May',
-        6: 'June',
-        7: 'July',
-      },
-      eating: 'Eating',
-      drinking: 'Drinking',
-      sleeping: 'Sleeping',
-      designing: 'Designing',
-      coding: 'Coding',
-      cycling: 'Cycling',
-      running: 'Running',
-      customer: 'Customer',
-    },
   },
   errors: {
     backToHome: 'Back to home',

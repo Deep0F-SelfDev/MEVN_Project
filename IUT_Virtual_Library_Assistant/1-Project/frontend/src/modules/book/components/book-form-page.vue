@@ -1,20 +1,20 @@
 <template>
   <div>
-    <el-breadcrumb separator-class="el-icon-arrow-right">                                      <!--Page navigation bar-->
+    <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/' }">
         <app-i18n code="home.menu"></app-i18n>
       </el-breadcrumb-item>
       <el-breadcrumb-item :to="{ path: '/book' }">
         <app-i18n code="entities.book.menu"></app-i18n>
       </el-breadcrumb-item>
-      <el-breadcrumb-item>                                                                     <!--NavBar Items-->
+      <el-breadcrumb-item>
         <app-i18n code="entities.book.edit.title" v-if="isEditing"></app-i18n>
-        <app-i18n code="entities.book.new.title" v-if="!isEditing"></app-i18n>                 <!--If not Editing Then New Book-->
+        <app-i18n code="entities.book.new.title" v-if="!isEditing"></app-i18n>
       </el-breadcrumb-item>
     </el-breadcrumb>
 
     <div class="app-content-page">
-      <h1 class="app-content-title">                                                           <!--New/Edit Book Header-->
+      <h1 class="app-content-title">
         <app-i18n code="entities.book.edit.title" v-if="isEditing"></app-i18n>
         <app-i18n code="entities.book.new.title" v-if="!isEditing"></app-i18n>
       </h1>
@@ -29,11 +29,11 @@
         @submit.native.prevent="doSubmit"
         class="form"
         ref="form"
-        v-if="model"                                                                           
-      >                                                                                       <!--Block Render if Return True-->
-        <el-form-item :label="fields.id.label" :prop="fields.id.name" v-if="isEditing">       <!--Form Fields-->
-          <el-col :lg="11" :md="16" :sm="24">                                                 <!--Fillup Box-->
-            <el-input :disabled="true" v-model="model[fields.id.name]"/>
+        v-if="model"
+      >
+        <el-form-item :label="fields.id.label" :prop="fields.id.name" v-if="isEditing">
+          <el-col :lg="11" :md="16" :sm="24">
+            <el-input :disabled="true" v-model="model[fields.id.name]" />
           </el-col>
         </el-form-item>
 
@@ -43,7 +43,7 @@
           :required="fields.isbn.required"
         >
           <el-col :lg="11" :md="16" :sm="24">
-            <el-input v-model="model[fields.isbn.name]" ref="focus" />
+            <el-input ref="focus" v-model="model[fields.isbn.name]" />
           </el-col>
         </el-form-item>
 
@@ -73,20 +73,10 @@
           :required="fields.numberOfCopies.required"
         >
           <el-col :lg="11" :md="16" :sm="24">
-            <el-input-number :precision="0" :step="1" v-model="model[fields.numberOfCopies.name]" ></el-input-number>
+            <el-input-number :precision="0" :step="1" v-model="model[fields.numberOfCopies.name]"></el-input-number>
           </el-col>
         </el-form-item>
 
-        <el-form-item
-          :label="fields.stock.label"
-          :prop="fields.stock.name"
-          :required="fields.stock.required"
-        >
-          <el-col :lg="11" :md="16" :sm="24">
-            <el-input-number :precision="0" :step="1" v-model="model[fields.stock.name]" ></el-input-number>
-          </el-col>
-        </el-form-item>
-        
         <el-form-item
           :label="fields.images.label"
           :prop="fields.images.name"
@@ -102,32 +92,14 @@
           </el-col>
         </el-form-item>
 
-        <el-form-item
-          :label="fields.status.label"
-          :prop="fields.status.name"
-          :required="fields.status.required"
-        >
-          <el-col :lg="11" :md="16" :sm="24">
-            <el-select placeholder v-model="model[fields.status.name]">
-              <el-option :value="undefined">--</el-option>
-              <el-option
-                :key="option.id"
-                :label="option.label"
-                :value="option.id"
-                v-for="option in fields.status.options"
-              ></el-option>
-            </el-select>
-          </el-col>
-        </el-form-item>
-
         <el-form-item>
           <div class="form-buttons">
-            <el-button                                                                        
+            <el-button
               :disabled="saveLoading"
               @click="doSubmit"
               icon="el-icon-fa-floppy-o"
               type="primary"
-            >                                                                                 <!--Buttons-->
+            >
               <app-i18n code="common.save"></app-i18n>
             </el-button>
 
@@ -153,9 +125,7 @@ const formSchema = new FormSchema([
   fields.title,
   fields.author,
   fields.numberOfCopies,
-  fields.stock,
   fields.images,
-  fields.status,
 ]);
 
 export default {
